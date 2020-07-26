@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">YahtzeeBase</string>
+    <string name="totalFmt">Total: %d</string>
+    <string name="state_before_turn">Roll the dice to start the turn</string>
+    <string name="state_rolled_once">You have rolled once, select dice to keep</string>
+    <string name="state_rolled_twice">You have rolled twice, select dice to keep</string>
+    <string name="state_rolled_thrice">Select how to score your dice</string>
+    <string name="activity_title">Yahtzee: %s (%d)</string>
+</resources>

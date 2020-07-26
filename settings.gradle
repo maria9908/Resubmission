@@ -1,0 +1,5 @@
+include ':testlib'
+include ':logic'
+include ':lib'
+include ':app'
+rootProject.name = "YahtzeeBase"

@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainActivityContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/diceCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/scrollLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/upperGroupCard"
+                style="@style/groupcard"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/lblUpperGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="Upper Group"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/lblOnes"
+                        style="@style/categoryButton"
+                        android:text="Ones"
+                        app:layout_constraintEnd_toStartOf="@id/guideLeftUpper"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblUpperGroup"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+                    <TextView
+                        android:id="@+id/lblValOnes"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblOnes"
+                        app:layout_constraintEnd_toStartOf="@+id/guideMiddleUpper"
+                        app:layout_constraintStart_toEndOf="@+id/guideLeftUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblOnes"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="4" />
+
+
+                    <Button
+                        android:id="@+id/lblTwos"
+                        style="@style/categoryButton"
+                        android:text="Twos"
+                        app:layout_constraintEnd_toStartOf="@id/guideLeftUpper"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblOnes"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+                    <TextView
+                        android:id="@+id/lblValTwos"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblTwos"
+                        app:layout_constraintEnd_toStartOf="@+id/guideMiddleUpper"
+                        app:layout_constraintStart_toEndOf="@+id/guideLeftUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblTwos"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="8" />
+
+
+                    <Button
+                        android:id="@+id/lblThrees"
+                        style="@style/categoryButton"
+                        android:text="Threes"
+                        app:layout_constraintEnd_toStartOf="@id/guideLeftUpper"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblTwos"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+
+                    <TextView
+                        android:id="@+id/lblValThrees"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblThrees"
+                        app:layout_constraintEnd_toStartOf="@+id/guideMiddleUpper"
+                        app:layout_constraintStart_toEndOf="@+id/guideLeftUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblThrees"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="6" />
+
+                    <Button
+                        android:id="@+id/lblFours"
+                        style="@style/categoryButton"
+                        android:text="Fours"
+                        app:layout_constraintEnd_toStartOf="@id/guideRightUpper"
+                        app:layout_constraintStart_toStartOf="@+id/guideMiddleUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblOnes"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+                    <TextView
+                        android:id="@+id/lblValFours"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblFours"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guideRightUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblFours"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="12" />
+
+
+                    <Button
+                        android:id="@+id/lblFives"
+                        style="@style/categoryButton"
+                        android:text="Fives"
+                        app:layout_constraintEnd_toStartOf="@id/guideRightUpper"
+                        app:layout_constraintStart_toStartOf="@+id/guideMiddleUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblTwos"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+                    <TextView
+                        android:id="@+id/lblValFives"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblFives"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guideRightUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblFives"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="15" />
+
+
+                    <Button
+                        android:id="@+id/lblSixes"
+                        style="@style/categoryButton"
+                        android:text="Sixes"
+                        app:layout_constraintEnd_toStartOf="@id/guideRightUpper"
+                        app:layout_constraintStart_toStartOf="@+id/guideMiddleUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblThrees"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+                    <TextView
+                        android:id="@+id/lblValSixes"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblSixes"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guideRightUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblSixes"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="18" />
+
+
+                    <TextView
+                        android:id="@+id/lblUpperSubtotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Subtotal"
+                        app:layout_constraintEnd_toStartOf="@id/guideLeftUpper"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblThrees"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+
+                    <TextView
+                        android:id="@+id/lblValUpperSubtotal"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblUpperSubtotal"
+                        app:layout_constraintEnd_toStartOf="@+id/guideMiddleUpper"
+                        app:layout_constraintStart_toEndOf="@+id/guideLeftUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblUpperSubtotal"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="63" />
+
+                    <TextView
+                        android:id="@+id/lblUpperTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upper Total"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/lblUpperSubtotal"
+                        app:layout_constraintEnd_toStartOf="@id/guideRightUpper"
+                        app:layout_constraintStart_toEndOf="@id/guideMiddleUpper"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+                    <TextView
+                        android:id="@+id/lblValUpperTotal"
+                        style="@style/categoryValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblUpperTotal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guideRightUpper"
+                        app:layout_constraintTop_toTopOf="@+id/lblUpperTotal"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="18" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideMiddleUpper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="204dp"
+                        app:layout_constraintGuide_percent=".5" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideLeftUpper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent=".37"
+                        tools:layout_editor_absoluteX="379dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideRightUpper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent=".87"
+                        tools:layout_editor_absoluteX="379dp" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/lowerGroupCard"
+                style="@style/groupcard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:layout_constraintTop_toBottomOf="@id/upperGroupCard"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/lblLowerGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="Lower Group"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/lblThreeOfAKind"
+                        style="@style/categoryButton"
+                        android:text="Three of a Kind"
+                        app:layout_constraintEnd_toStartOf="@id/guideLeftLower"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblLowerGroup"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+                    <TextView
+                        android:id="@+id/lblValThreeOfAKind"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblThreeOfAKind"
+                        app:layout_constraintEnd_toStartOf="@+id/guideMiddleLower"
+                        app:layout_constraintStart_toEndOf="@+id/guideLeftLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblThreeOfAKind"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="4" />
+
+
+                    <Button
+                        android:id="@+id/lblFourOfAKind"
+                        style="@style/categoryButton"
+                        android:text="Four of a Kind"
+                        app:layout_constraintEnd_toStartOf="@id/guideLeftLower"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblThreeOfAKind"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="72dp" />
+
+                    <TextView
+                        android:id="@+id/lblValFourOfAKind"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblFourOfAKind"
+                        app:layout_constraintEnd_toStartOf="@+id/guideMiddleLower"
+                        app:layout_constraintStart_toEndOf="@+id/guideLeftLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblFourOfAKind"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="8" />
+
+
+                    <Button
+                        android:id="@+id/lblFullHouse"
+                        style="@style/categoryButton"
+                        android:text="Full House"
+                        app:layout_constraintEnd_toStartOf="@id/guideLeftLower"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblFourOfAKind"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="128dp" />
+
+
+                    <TextView
+                        android:id="@+id/lblValFullHouse"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblFullHouse"
+                        app:layout_constraintEnd_toStartOf="@+id/guideMiddleLower"
+                        app:layout_constraintStart_toEndOf="@+id/guideLeftLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblFullHouse"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="6" />
+
+                    <Button
+                        android:id="@+id/lblSmallStraight"
+                        style="@style/categoryButton"
+                        android:text="Small Straight"
+                        app:layout_constraintEnd_toStartOf="@id/guideLeftLower"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblFullHouse"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+
+                    <TextView
+                        android:id="@+id/lblValSmallStraight"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblSmallStraight"
+                        app:layout_constraintEnd_toStartOf="@+id/guideMiddleLower"
+                        app:layout_constraintStart_toEndOf="@+id/guideLeftLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblSmallStraight"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="6" />
+
+                    <Button
+                        android:id="@+id/lblLargeStraight"
+                        style="@style/categoryButton"
+                        android:text="Large Straight"
+                        app:layout_constraintEnd_toStartOf="@id/guideRightLower"
+                        app:layout_constraintStart_toStartOf="@+id/guideMiddleLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblThreeOfAKind"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+                    <TextView
+                        android:id="@+id/lblValLargeStraight"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblLargeStraight"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guideRightLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblLargeStraight"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="12" />
+
+
+                    <Button
+                        android:id="@+id/lblYahtzee"
+                        style="@style/categoryButton"
+                        android:text="Yahtzee"
+                        app:layout_constraintEnd_toStartOf="@id/guideRightLower"
+                        app:layout_constraintStart_toStartOf="@+id/guideMiddleLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblFourOfAKind"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+                    <TextView
+                        android:id="@+id/lblValYahtzee"
+                        style="@style/categoryValue"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblYahtzee"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guideRightLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblYahtzee"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="15" />
+
+
+                    <Button
+                        android:id="@+id/lblChance"
+                        style="@style/categoryButton"
+                        android:text="Chance"
+                        app:layout_constraintEnd_toStartOf="@id/guideRightLower"
+                        app:layout_constraintStart_toStartOf="@+id/guideMiddleLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblFullHouse"
+                        tools:layout_conversion_absoluteHeight="48dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+                    <TextView
+                        android:id="@+id/lblValChance"
+                        style="@style/categoryValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblChance"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/guideRightLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblChance"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="18" />
+
+
+                    <TextView
+                        android:id="@+id/lblLowerTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lower Total"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblValSmallStraight"
+                        app:layout_constraintEnd_toStartOf="@id/guideRightLower"
+                        app:layout_constraintStart_toEndOf="@id/guideMiddleLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblValSmallStraight"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="88dp" />
+
+
+                    <TextView
+                        android:id="@+id/lblValLowerTotal"
+                        style="@style/categoryValue"
+                        android:layout_width="0dp"
+                        android:maxLines="1"
+                        app:autoSizeMinTextSize="8sp"
+                        app:autoSizeTextType="uniform"
+                        app:layout_constraintBottom_toBottomOf="@+id/lblLowerTotal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideRightLower"
+                        app:layout_constraintTop_toTopOf="@+id/lblLowerTotal"
+                        tools:layout_conversion_absoluteHeight="19dp"
+                        tools:layout_conversion_absoluteWidth="16dp"
+                        tools:text="12345" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideMiddleLower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="204dp"
+                        app:layout_constraintGuide_percent=".5" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideLeftLower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent=".37"
+
+                        tools:layout_editor_absoluteX="379dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideRightLower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent=".87"
+                        tools:layout_editor_absoluteX="379dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/totalCard"
+                style="@style/groupcard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/lblTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/totalFmt"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/diceCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/groupcard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/die0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                style="@style/dieView"
+                android:src="@drawable/ic_unknowndie"
+                app:layout_constraintBottom_toBottomOf="@+id/btnRollDice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnRollDice" />
+
+            <ImageView
+                android:id="@+id/die1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                style="@style/dieView"
+                android:src="@drawable/ic_unknowndie"
+                app:layout_constraintBottom_toBottomOf="@+id/die0"
+                app:layout_constraintStart_toEndOf="@+id/die0"
+                app:layout_constraintTop_toTopOf="@+id/die0" />
+
+            <ImageView
+                android:id="@+id/die2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/ic_unknowndie"
+                style="@style/dieView"
+                app:layout_constraintBottom_toBottomOf="@+id/die0"
+                app:layout_constraintStart_toEndOf="@+id/die1"
+                app:layout_constraintTop_toTopOf="@+id/die0" />
+
+            <ImageView
+                android:id="@+id/die3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/ic_unknowndie"
+                style="@style/dieView"
+                app:layout_constraintBottom_toBottomOf="@+id/die0"
+                app:layout_constraintStart_toEndOf="@+id/die2"
+                app:layout_constraintTop_toTopOf="@+id/die0" />
+
+            <ImageView
+                android:id="@+id/die4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/ic_unknowndie"
+                style="@style/dieView"
+                app:layout_constraintBottom_toBottomOf="@+id/die0"
+                app:layout_constraintStart_toEndOf="@+id/die3"
+                app:layout_constraintTop_toTopOf="@+id/die0" />
+
+            <TextView
+                android:id="@+id/taskView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/state_before_turn" />
+
+            <Button
+                android:id="@+id/btnRollDice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Roll dice"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/die4"
+                app:layout_constraintTop_toBottomOf="@+id/taskView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
