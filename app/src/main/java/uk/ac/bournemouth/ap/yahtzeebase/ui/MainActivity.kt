@@ -9,9 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-import uk.ac.bournemouth.ap.yahtzeebase.lib.GameFinishedListener
-import uk.ac.bournemouth.ap.yahtzeebase.lib.GameUpdateListener
-import uk.ac.bournemouth.ap.yahtzeebase.lib.ScoreGroup
+import uk.ac.bournemouth.ap.yahtzeebase.lib.*
 import uk.ac.bournemouth.ap.yahtzeebase.logic.StudentYahtzeeGame
 
 class MainActivity : AppCompatActivity(), GameUpdateListener<StudentYahtzeeGame> {
@@ -21,6 +19,9 @@ class MainActivity : AppCompatActivity(), GameUpdateListener<StudentYahtzeeGame>
     lateinit var dieViews: Array<ImageView>
 
     // TODO you want to have some sort of game property
+    var game: StudentYahtzeeGame= StudentYahtzeeGame(players = listOf(HumanPlayer("Player 1"),
+        HumanPlayer("Player 2")
+    ))
 
     /** Simple accessor for the button associated with a scoregroup. */
     private val ScoreGroup.button: Button get() = scoreButtons[this.ordinal]
@@ -86,14 +87,14 @@ class MainActivity : AppCompatActivity(), GameUpdateListener<StudentYahtzeeGame>
 
         for(dieView in dieViews) {
             dieView.setOnClickListener {
-                // This will allow the dies to be selected/deselected
-/*
+
                 if (game.roundInTurn== 1 || game.roundInTurn == 2) {
                     it.isSelected = !it.isSelected
                 }
-*/
+
             }
         }
+
 
         // TODO: Trigger the update once to init the view.
     }
@@ -111,12 +112,12 @@ class MainActivity : AppCompatActivity(), GameUpdateListener<StudentYahtzeeGame>
     }
 
     companion object {
-        /* In onGameUpdated you may want to display the dice, using this array (and appropriate image
+         /*In onGameUpdated you may want to display the dice, using this array (and appropriate image
            resources makes that quite easy to do.
 
         val DIE_IMAGES = intArrayOf(R.drawable.ic_unknowndie, R.drawable.ic_die1, R.drawable.ic_die2, R.drawable.ic_die3,
                 R.drawable.ic_die4, R.drawable.ic_die5, R.drawable.ic_die6)
+        */
 
-         */
     }
 }

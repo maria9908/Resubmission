@@ -2,6 +2,8 @@ package uk.ac.bournemouth.ap.yahtzeebase.logic
 
 import uk.ac.bournemouth.ap.yahtzeebase.lib.*
 import uk.ac.bournemouth.ap.yahtzeebase.lib.YahtzeeGame.Companion.MAX_TURNS
+import java.lang.AssertionError
+
 
 class StudentYahtzeeGame(
     players: List<Player> = listOf(
@@ -11,7 +13,7 @@ class StudentYahtzeeGame(
 ) : YahtzeeGame<StudentYahtzeeGame> {
 
     /** You want to store the list of players here. It is passed in as a constuctor argument. */
-    override val players get() = TODO("Assign the players here")
+    override val players: List<Player> = players
 
     /** This stores the list of game finished listeners. */
     private val gameFinishedListeners = mutableListOf<GameFinishedListener<StudentYahtzeeGame>>()
@@ -30,7 +32,8 @@ class StudentYahtzeeGame(
      * the current player in the array and just look up the current player from that index in a
      * getter.
      */
-    override val currentPlayer: Player get() = TODO("Return the current player")
+    private var currentPlayerIndex: Int = 0
+    override val currentPlayer: Player get() = players[currentPlayerIndex ]
 
     /**
      * This property provides access to the state of individual players. You access it most times
@@ -51,7 +54,7 @@ class StudentYahtzeeGame(
      *
      * @see [arrayOfNulls]
      */
-    override val dice: Array<Int?> get() = TODO("Make this a var and initialise it to an array of null values")
+    override val dice: Array<Int?> = arrayOfNulls(5)
 
     /**
      * This property holds an integer that determines in which turn the game is:
@@ -83,7 +86,27 @@ class StudentYahtzeeGame(
      * @param keep The list of the dice to keep.
      */
     override fun rollDice(keep: Iterable<Int>) {
-        TODO("Implement handling the rolling of dice")
+
+        for (i in 0 until dice.size){
+            dice[i]= generator.getNextDieThrow()
+        }
+
+        //making a copy list of the dice that have been thrown
+        var copiedListOfDice =dice.toMutableList()
+
+    do {
+            if (copiedListOfDice.removeAll(keep))
+            {
+                var newDice=keep.toMutableList()
+                if (newDice.size < 5)
+                {
+                    newDice.add(generator.getNextDieThrow())
+                }
+            } else throw Exception("That die can't be kept")
+        }while (roundInTurn < 4)
+
+
+
 
         // Remember to use generator.getNextDieThrow() to get an individual new die throw.
     }
@@ -156,6 +179,8 @@ class StudentYahtzeeGame(
      */
     inner class StudentPlayerGameState : YahtzeeGame.PlayerGameState {
 
+
+
         /* TODO you probably want to have a property recording the scores for this player. Remember
            that a score of 0 is valid and different from a non-existing score (maybe you record that
            as `-1` or `null`
@@ -168,7 +193,22 @@ class StudentYahtzeeGame(
          * [ScoreGroup.isUpper], [Iterable.filter], [Iterable.mapNotNull] and [Iterable<Int>.sum]
          */
         override val upperSubTotal: Int
-            get() = TODO("Calculate the total of the upper table before any bonus")
+        get()
+        {
+            var values= ScoreGroup.values().filter { it.isUpper }
+
+
+
+            /**for (value in ScoreGroup.values().filter { it.isUpper })
+            {
+
+
+            }*/
+
+            return upperSubTotal
+
+        }
+
 
         /**
          * The upper total is an adjustment of [upperSubTotal] where if the subtotal is 63 or more
