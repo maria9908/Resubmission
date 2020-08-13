@@ -118,7 +118,7 @@ class StudentYahtzeeGame(
 
         fireGameUpdate()
 
-        
+
         // Remember to use generator.getNextDieThrow() to get an individual new die throw.
     }
 
@@ -191,10 +191,6 @@ class StudentYahtzeeGame(
     inner class StudentPlayerGameState : YahtzeeGame.PlayerGameState {
 
         val scores: Array<Int?> = arrayOfNulls(13)
-        /* TODO you probably want to have a property recording the scores for this player. Remember
-           that a score of 0 is valid and different from a non-existing score (maybe you record that
-           as `-1` or `null`
-         */
 
 
         /**
@@ -207,14 +203,13 @@ class StudentYahtzeeGame(
 
 
 
-
         /**
          * The upper total is an adjustment of [upperSubTotal] where if the subtotal is 63 or more
          * an additional 25 point bonus is applied. This is probably best a calculated property, and
          * if [upperSubTotal] is calculated, this one should too.
          */
-        override val upperTotal: Int
-            get() = TODO("Calculate the full total of the upper table by applying the bonus if earned")
+        override val upperTotal: Int = if (upperSubTotal> 63) + 25 else upperSubTotal
+
 
         /**
          * The total of the lower groups (you can use [ScoreGroup.isLower] for this). Again,
@@ -228,7 +223,7 @@ class StudentYahtzeeGame(
          * this would probably be a calculated property.
          */
         override val totalScore: Int
-            get() = TODO("Calculate the overall total score")
+            get() = upperSubTotal + upperTotal + lowerTotal
 
         /**
          * This is a key function of the game. It takes the current [dice] property, checks that
@@ -258,6 +253,11 @@ class StudentYahtzeeGame(
          * @param scoreGroup The group under which to score the current dice.
          */
         override fun applyDiceToGroup(scoreGroup: ScoreGroup) {
+
+            // counting all the dice by making an Array
+            var counts= IntArray(6)
+
+
 
         }
 
