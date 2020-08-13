@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(), GameUpdateListener<StudentYahtzeeGame>
     lateinit var scoreButtons: Array<Button>
     lateinit var dieViews: Array<ImageView>
 
-    // TODO you want to have some sort of game property
+    //  A game property
     var game: StudentYahtzeeGame= StudentYahtzeeGame(players = listOf(HumanPlayer("Player 1"),
         HumanPlayer("Player 2")
     ))

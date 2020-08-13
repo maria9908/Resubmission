@@ -3,6 +3,7 @@ package uk.ac.bournemouth.ap.yahtzeebase.logic
 import uk.ac.bournemouth.ap.yahtzeebase.lib.*
 import uk.ac.bournemouth.ap.yahtzeebase.lib.YahtzeeGame.Companion.MAX_TURNS
 import java.lang.AssertionError
+import java.lang.Exception
 
 
 class StudentYahtzeeGame(
@@ -13,7 +14,7 @@ class StudentYahtzeeGame(
 ) : YahtzeeGame<StudentYahtzeeGame> {
 
     /** You want to store the list of players here. It is passed in as a constuctor argument. */
-    override val players: List<Player> = players
+    override val players: List<Player> = players.map { it }
 
     /** This stores the list of game finished listeners. */
     private val gameFinishedListeners = mutableListOf<GameFinishedListener<StudentYahtzeeGame>>()
@@ -25,8 +26,7 @@ class StudentYahtzeeGame(
      * You want to record when the game is finished. While it is possible to calculate this, it is
      * probably better to just store it.
      */
-    override val isFinished: Boolean get() = TODO("Make this a var that stores whether the game is finished")
-
+    override var isFinished: Boolean = false
     /**
      * Get access to the current player. Note that it may be convenient to store the index of
      * the current player in the array and just look up the current player from that index in a
@@ -87,27 +87,38 @@ class StudentYahtzeeGame(
      */
     override fun rollDice(keep: Iterable<Int>) {
 
-        for (i in 0 until dice.size){
-            dice[i]= generator.getNextDieThrow()
+        if (roundInTurn>3)
+        {
+            throw Exception ("No more turns")
         }
 
-        //making a copy list of the dice that have been thrown
         var copiedListOfDice =dice.toMutableList()
 
-    do {
-            if (copiedListOfDice.removeAll(keep))
+        var newDice= mutableListOf<Int>()
+
+        for(item in keep)
+        {
+            if (!copiedListOfDice.remove(item))
             {
-                var newDice=keep.toMutableList()
-                if (newDice.size < 5)
-                {
-                    newDice.add(generator.getNextDieThrow())
-                }
-            } else throw Exception("That die can't be kept")
-        }while (roundInTurn < 4)
+                throw IllegalArgumentException("Trying to keep die that is not there")
+            }
+            newDice.add(item)
+        }
 
+        while (newDice.size < 5)
+        {
+            newDice.add(generator.getNextDieThrow())
+        }
+        newDice.sort()
 
+        for(x in newDice.indices)
+        {
+            dice[x]=newDice[x]
+        }
 
+        fireGameUpdate()
 
+        
         // Remember to use generator.getNextDieThrow() to get an individual new die throw.
     }
 
@@ -179,8 +190,7 @@ class StudentYahtzeeGame(
      */
     inner class StudentPlayerGameState : YahtzeeGame.PlayerGameState {
 
-
-
+        val scores: Array<Int?> = arrayOfNulls(13)
         /* TODO you probably want to have a property recording the scores for this player. Remember
            that a score of 0 is valid and different from a non-existing score (maybe you record that
            as `-1` or `null`
@@ -193,21 +203,9 @@ class StudentYahtzeeGame(
          * [ScoreGroup.isUpper], [Iterable.filter], [Iterable.mapNotNull] and [Iterable<Int>.sum]
          */
         override val upperSubTotal: Int
-        get()
-        {
-            var values= ScoreGroup.values().filter { it.isUpper }
+        get() = ScoreGroup.values().filter(ScoreGroup::isUpper).mapNotNull(this::getGroupScore).sum()
 
 
-
-            /**for (value in ScoreGroup.values().filter { it.isUpper })
-            {
-
-
-            }*/
-
-            return upperSubTotal
-
-        }
 
 
         /**
@@ -223,7 +221,7 @@ class StudentYahtzeeGame(
          * it is probably easiest to calculate this on demand.
          */
         override val lowerTotal: Int
-            get() = TODO("Calculate the total of the lower table")
+            get() = ScoreGroup.values().filter(ScoreGroup::isLower).mapNotNull(this::getGroupScore).sum()
 
         /**
          * The total of the score of both upper and lower groups. Or just the overall total. Again
@@ -260,7 +258,7 @@ class StudentYahtzeeGame(
          * @param scoreGroup The group under which to score the current dice.
          */
         override fun applyDiceToGroup(scoreGroup: ScoreGroup) {
-            TODO("Implement the actual code that applies the dice to a group and moves to the next turn")
+
         }
 
         /**
@@ -269,7 +267,7 @@ class StudentYahtzeeGame(
          * initialize the scores as null, and set them to a score once that group has been "played".
          */
         override fun getGroupScore(scoreGroup: ScoreGroup): Int? {
-            return TODO("Return the score for the given group")
+            return scores[scoreGroup.ordinal]
         }
 
     }
