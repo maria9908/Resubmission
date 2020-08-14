@@ -255,17 +255,14 @@ class StudentYahtzeeGame(
         var diceTotal= intArrayOf(6)
         override fun applyDiceToGroup(scoreGroup: ScoreGroup) {
             //checking if a group has score in it
-            if (!ScoreGroup.values().isEmpty() )
-            {
-                throw Exception("Can't add dice here")
-            }
+
 
 
             // counting all the dice values by making an Array
 
 
             //loop through the dice array
-            for (die in dice)
+            for (die in 0 until dice.size)
             {
                 if(die == 1)
                 {
@@ -357,28 +354,48 @@ class StudentYahtzeeGame(
 
         fun calcSmallStraight():Int
         {
-            var result3= 0
-            for(i in 0..5 )
-            {
-                if(diceTotal[i]==2 && diceTotal[i]==3)
-                {
-                    result3= 30
+            var flag = true
+
+            var previousValue = dice[0]!!
+            for(i in 1..4 ) {
+                for (i in 2..5) {
+                    if (dice[i]!! != previousValue + 1) {
+                        flag = false
+
+                    }
+                    previousValue = dice[i]!!
                 }
+                if (flag == true) {
+                    return 40
+                } else
+                    return 0
             }
-            return result3
+            if (flag == true) {
+                return 40
+            } else
+                return 0
         }
 
         fun calcLargeStraight():Int
         {
-            var result4= 0
-            for(i in 0..5 )
+            var flag = true
+
+            var previousValue = dice[0]!!
+            for(i in 1..4 )
             {
-                if(diceTotal.sorted())
+
+                if( dice[i]!! != previousValue + 1)
                 {
-                    result4= 40
+                    flag=false
+
                 }
+                previousValue = dice[i]!!
             }
-            return result4
+            if (flag == true)
+            {
+            return 40
+            } else
+                return 0
         }
         fun calcYahtzee():Int
         {

@@ -35,7 +35,9 @@ class MainActivity : AppCompatActivity(), GameUpdateListener<StudentYahtzeeGame>
         btnRollDice.setOnClickListener { doRollDice() }
 
         // TODO Listen to game update events (to update the views)
+        game.fireGameUpdate()
         // TODO Listen to game finish events (to be able to show a win dialog/lock the UI)
+        game.fireGameFinished()
 
         // Just some convenient ways to get at the ui controls. As an array is so much easier than
         // as individual views.
@@ -94,9 +96,8 @@ class MainActivity : AppCompatActivity(), GameUpdateListener<StudentYahtzeeGame>
 
             }
         }
+        onGameUpdated(game)
 
-
-        // TODO: Trigger the update once to init the view.
     }
 
     private fun doChooseGroup(scoreGroup: ScoreGroup) {
@@ -108,7 +109,7 @@ class MainActivity : AppCompatActivity(), GameUpdateListener<StudentYahtzeeGame>
     }
 
     override fun onGameUpdated(game: StudentYahtzeeGame) {
-        TODO("Update all the game display when the game is updated")
+        invalidateOptionsMenu()
     }
 
     companion object {
