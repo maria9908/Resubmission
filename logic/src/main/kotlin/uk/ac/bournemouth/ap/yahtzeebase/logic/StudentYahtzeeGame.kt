@@ -252,13 +252,155 @@ class StudentYahtzeeGame(
          *
          * @param scoreGroup The group under which to score the current dice.
          */
+        var diceTotal= intArrayOf(6)
         override fun applyDiceToGroup(scoreGroup: ScoreGroup) {
+            //checking if a group has score in it
+            if (!ScoreGroup.values().isEmpty() )
+            {
+                throw Exception("Can't add dice here")
+            }
 
-            // counting all the dice by making an Array
-            var counts= IntArray(6)
+
+            // counting all the dice values by making an Array
 
 
+            //loop through the dice array
+            for (die in dice)
+            {
+                if(die == 1)
+                {
+                    diceTotal[0]= diceTotal[0]+1
+                }
+                if(die == 2)
+                {
+                    diceTotal[1]= diceTotal[1]+1
+                }
+                if(die == 3)
+                {
+                    diceTotal[2]= diceTotal[2]+1
+                }
+                if(die == 4)
+                {
+                    diceTotal[3]= diceTotal[3]+1
+                }
+                if(die == 5)
+                {
+                    diceTotal[4]= diceTotal[4]+1
+                }
+                if(die == 6)
+                {
+                    diceTotal[5]= diceTotal[5]+1
+                }
 
+            }
+
+            //when statement to pass allong the frequences from counts
+            var score= when(scoreGroup)
+            {
+                ScoreGroup.ONES -> diceTotal[0]
+                ScoreGroup.TWOS -> diceTotal[1]
+                ScoreGroup.THREES -> diceTotal[2]
+                ScoreGroup.FOURS -> diceTotal[3]
+                ScoreGroup.FIVES -> diceTotal[4]
+                ScoreGroup.SIXES -> diceTotal[5]
+
+                ScoreGroup.THREE_OF_A_KIND -> calcThreeOfaKind()
+                ScoreGroup.FOUR_OF_A_KIND -> calcFourOfaKind()
+                ScoreGroup.FULL_HOUSE -> calcFullHouse()
+                ScoreGroup.SMALL_STRAIGHT -> calcSmallStraight()
+                ScoreGroup.LARGE_STRAIGHT -> calcLargeStraight()
+                ScoreGroup.YAHTZEE -> calcYahtzee()
+                ScoreGroup.CHANCE-> calcChance()
+
+            }
+
+            scores[scoreGroup.ordinal]= score
+        }
+        fun calcThreeOfaKind():Int
+        {
+            var result= 0
+            for(i in 0..5 )
+            {
+                if(diceTotal[i]==3)
+                {
+                     result= 3 * i
+                }
+            }
+            return result
+        }
+
+        fun calcFourOfaKind():Int
+        {
+            var result1= 0
+            for(i in 0..5 )
+            {
+                if(diceTotal[i]==4)
+                {
+                    result1= 4 * i
+                }
+            }
+            return result1
+        }
+
+        fun calcFullHouse():Int
+        {
+            var result2= 0
+            for(i in 0..5 )
+            {
+                if(diceTotal[i]==2 && diceTotal[i]==3)
+                {
+                    result2= i+i
+                }
+            }
+            return result2
+        }
+
+        fun calcSmallStraight():Int
+        {
+            var result3= 0
+            for(i in 0..5 )
+            {
+                if(diceTotal[i]==2 && diceTotal[i]==3)
+                {
+                    result3= 30
+                }
+            }
+            return result3
+        }
+
+        fun calcLargeStraight():Int
+        {
+            var result4= 0
+            for(i in 0..5 )
+            {
+                if(diceTotal.sorted())
+                {
+                    result4= 40
+                }
+            }
+            return result4
+        }
+        fun calcYahtzee():Int
+        {
+            var result6= 0
+            for(i in 0..5 )
+            {
+                if(diceTotal[i]==5)
+                {
+                    result6= 5*i
+                }
+            }
+            return result6
+        }
+
+        fun calcChance():Int
+        {
+            var result7= 0
+            for(i in 0..5 )
+            {
+                diceTotal.sum()
+            }
+            return result7
         }
 
         /**

@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity(), GameUpdateListener<StudentYahtzeeGame>
             }
         }
 
+
         // TODO: Trigger the update once to init the view.
     }
 
